@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+spec:
+  ingressClassName: myapp-internal
+  rules:
+  - host: myapp.ce-aa.kubepia.net
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: myapp
+            port:
+              number: 8080
+        pathType: Prefix
